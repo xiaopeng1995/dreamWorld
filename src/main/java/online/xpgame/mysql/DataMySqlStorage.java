@@ -27,7 +27,6 @@ public class DataMySqlStorage {
         this.pool = pool;
     }
 
-
     /*************************************************** UserAccount  ****************************/
 
     /**
@@ -57,6 +56,39 @@ public class DataMySqlStorage {
                     rs.close();
                 if (stmt != null)
                     stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            pool.closeConnection(conn);
+        }
+        return count > 0;
+    }
+
+    /**
+     * 注册一条账户信息
+     *
+     * @param userAccount
+     * @return
+     */
+    public boolean insertUserAccount(UserEntity userAccount) {
+        Connection conn = pool.getConnection();
+        PreparedStatement statement = null;
+        int count = 0;
+        String sql = "insert into xpgame_user(name,password,update_date) " +
+                "values(?,?,?)";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, userAccount.getName());
+            statement.setString(2, userAccount.getPassword());
+            statement.setDate(3, new java.sql.Date(userAccount.getUpdate_date().getTime()));
+
+            count = statement.executeUpdate();
+        } catch (SQLException e) {
+            logger.error("保存用户ID为 {} 的用户账户信息时出错 {}", userAccount.getName(), e);
+        } finally {
+            try {
+                if (statement != null)
+                    statement.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

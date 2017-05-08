@@ -29,6 +29,7 @@ public final class ConnectionManager {
         logger.debug("Init Mysql DataSource Pool ");
         ds = new ComboPooledDataSource();
         ds.setUser(p.getString("mysql.username"));
+        System.out.println(p.getString("mysql.username"));
         ds.setPassword(p.getString("mysql.password"));
         ds.setJdbcUrl(p.getString("mysql.url"));
         ds.setDriverClass(p.getString("mysql.driverClass"));
