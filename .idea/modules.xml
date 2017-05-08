@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dreamWorld.iml" filepath="$PROJECT_DIR$/.idea/modules/dreamWorld.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dreamWorld_main.iml" filepath="$PROJECT_DIR$/.idea/modules/dreamWorld_main.iml" group="dreamWorld" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dreamWorld_test.iml" filepath="$PROJECT_DIR$/.idea/modules/dreamWorld_test.iml" group="dreamWorld" />
+    </modules>
+  </component>
+</project>

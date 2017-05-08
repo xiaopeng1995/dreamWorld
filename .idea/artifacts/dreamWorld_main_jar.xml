@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact name="dreamWorld_main:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/dreamWorld_main_jar</output-path>
+    <root id="root">
+      <element id="archive" name="dreamWorld_main.jar">
+        <element id="module-output" name="dreamWorld_main" />
+      </element>
+      <element id="library" level="project" name="Gradle: org.slf4j:slf4j-api:1.7.13" />
+      <element id="library" level="project" name="Gradle: ch.qos.logback:logback-core:1.1.3" />
+      <element id="library" level="project" name="Gradle: ch.qos.logback:logback-classic:1.1.3" />
+    </root>
+  </artifact>
+</component>
