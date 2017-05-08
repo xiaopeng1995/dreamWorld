@@ -11,7 +11,7 @@ public class Gmain {
     public static void main(String[] args) {
 
         System.out.println("hello word !");
-        logger.info("hello word !");
+        logger.info("hello word !.");
         try {
             Thread.sleep(90000);
         } catch (InterruptedException e) {
