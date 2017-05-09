@@ -3,6 +3,7 @@ package online.xpgame;
 import online.xpgame.mysql.DataMySqlStorage;
 import online.xpgame.mysql.manager.ConnectionManager;
 
+import online.xpgame.resource.AbstractResource;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.slf4j.Logger;
@@ -14,7 +15,7 @@ import org.slf4j.LoggerFactory;
 public class Gmain {
     private static final Logger logger = LoggerFactory.getLogger(Gmain.class);
     private static PropertiesConfiguration mysqlConfig;
-
+    private static  AbstractResource abstractResource;
     public static void main(String[] args) throws ConfigurationException {
 
         if (args.length > 0) {
@@ -33,6 +34,6 @@ public class Gmain {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(mySqlStorage.userinfoExists("admin"));
+        abstractResource=new AbstractResource(mySqlStorage);
     }
 }

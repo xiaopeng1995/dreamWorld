@@ -38,12 +38,12 @@ public class DataMySqlStorage {
         Statement stmt = null;
         ResultSet rs = null;
         Integer count = 0;
-        String sql = "select * from xpgame_user where user_id = '" + name + "'";
+        String sql = "select * from xpgame_user where name = '" + name + "'";
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(sql);
             if (rs.next()) {
-                count = rs.getInt(0);
+                count = rs.getInt("user_id");
             }
         } catch (SQLException e) {
             logger.error("查询用户名为 {} 的用户账户信息是否存在时出错 {}", name, e);
