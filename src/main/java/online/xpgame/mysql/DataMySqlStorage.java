@@ -38,7 +38,7 @@ public class DataMySqlStorage {
         Statement stmt = null;
         ResultSet rs = null;
         Integer count = 0;
-        String sql = "select count(*) from xpgame_user where user_id = '" + name + "'";
+        String sql = "select * from xpgame_user where user_id = '" + name + "'";
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(sql);

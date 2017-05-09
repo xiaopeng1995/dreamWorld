@@ -1,6 +1,6 @@
-package online.xpgame.userpreOperations;
+package online.xpgame.resource.userpreResource;
 
-import online.xpgame.api.AbstractResource;
+import online.xpgame.resource.AbstractResource;
 import online.xpgame.api.userApi.UserEntity;
 import online.xpgame.mysql.DataMySqlStorage;
 import org.slf4j.Logger;
@@ -14,18 +14,20 @@ import java.util.Date;
 public class UserInfo extends AbstractResource {
     // Logger
     private static final Logger logger = LoggerFactory.getLogger(UserInfo.class);
-
+    private Boolean ac=false;
+    private String msg=null;
     public UserInfo(DataMySqlStorage mysql) {
         super(mysql);
     }
 
     /**
      * 登陆验证
+     *
      * @param name 用户名
-     * @param pwe 密码
+     * @param pwe  密码
      * @return 信息
      */
-    public void login(String name ,String pwe) {
+    public void login(String name, String pwe) {
 
         UserEntity userEntity = new UserEntity();
         userEntity.setName(name);
@@ -37,16 +39,21 @@ public class UserInfo extends AbstractResource {
 
     /**
      * 注册验证
+     *
      * @param name 用户名
-     * @param pwe 密码
+     * @param pwe  密码
      */
-    public void registered(String name ,String pwe) {
+    public void registered(String name, String pwe) {
 
-        UserEntity userEntity = new UserEntity();
-        userEntity.setName(name);
-        userEntity.setPassword(pwe);
-        userEntity.setUpdate_date(new Date());
-        Boolean ac = mysql.insertUserAccount(userEntity);
-        logger.info("用户:{},注册结果:{}",name,ac);
+        if (mysql.userinfoExists(name)) {
+            UserEntity userEntity = new UserEntity();
+            userEntity.setName(name);
+            userEntity.setPassword(pwe);
+            userEntity.setUpdate_date(new Date());
+             ac = mysql.insertUserAccount(userEntity);
+        }else {
+
+        }
+        logger.info("用户:{},注册结果:{}", name, ac);
     }
 }

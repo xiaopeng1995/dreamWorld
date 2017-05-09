@@ -2,14 +2,11 @@ package online.xpgame;
 
 import online.xpgame.mysql.DataMySqlStorage;
 import online.xpgame.mysql.manager.ConnectionManager;
-import online.xpgame.api.userApi.UserEntity;
-import online.xpgame.userpreOperations.UserInfo;
+
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Date;
 
 /**
  * Created by xiaopeng on 2017/5/8.
@@ -36,6 +33,6 @@ public class Gmain {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        new UserInfo(mySqlStorage);
+        System.out.println(mySqlStorage.userinfoExists("admin"));
     }
 }

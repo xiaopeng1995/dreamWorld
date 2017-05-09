@@ -1,4 +1,4 @@
-package online.xpgame.api;
+package online.xpgame.resource;
 
 import online.xpgame.mysql.DataMySqlStorage;
 
