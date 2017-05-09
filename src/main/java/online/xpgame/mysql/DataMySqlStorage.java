@@ -4,14 +4,11 @@ package online.xpgame.mysql;
 
 
 import online.xpgame.mysql.manager.ConnectionManager;
-import online.xpgame.userApi.UserEntity;
+import online.xpgame.api.userApi.UserEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Mysql数据操作
@@ -32,16 +29,16 @@ public class DataMySqlStorage {
     /**
      * 根据平台用户的ID,判断用户账户信息是否存在
      *
-     * @param userId
+     * @param name 用户名
      * @return
      */
-    public boolean userinfoExists(String userId) {
+    public boolean userinfoExists(String name) {
         UserEntity Userinfo = null;
         Connection conn = pool.getConnection();
         Statement stmt = null;
         ResultSet rs = null;
         Integer count = 0;
-        String sql = "select count(*) from xpgame_user where user_id = '" + userId + "'";
+        String sql = "select count(*) from xpgame_user where user_id = '" + name + "'";
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(sql);
@@ -49,7 +46,7 @@ public class DataMySqlStorage {
                 count = rs.getInt(0);
             }
         } catch (SQLException e) {
-            logger.error("查询用户ID为 {} 的用户账户信息是否存在时出错 {}", userId, e);
+            logger.error("查询用户名为 {} 的用户账户信息是否存在时出错 {}", name, e);
         } finally {
             try {
                 if (rs != null)

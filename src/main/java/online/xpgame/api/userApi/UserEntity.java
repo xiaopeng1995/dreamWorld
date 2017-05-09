@@ -1,4 +1,4 @@
-package online.xpgame.userApi;
+package online.xpgame.api.userApi;
 
 import java.util.Date;
 
